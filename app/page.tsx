@@ -26,7 +26,7 @@ export default function Home() {
   const [movieResponse, setMovieResponse] = useState<MovieResponseInterface>();
   const [movies, setMovies] = useState<MovieInterface[]>([]);
 
-  async function handleMovieRequest(filters: FilterInterface) {
+  async function handleMoviesRequest(filters: FilterInterface) {
     setLoading(true);
     fetch(
       "https://communicationservice.sabancidx.com/moviemap/movie/get-movie-list",
@@ -47,7 +47,7 @@ export default function Home() {
   }
 
   useEffect(() => {
-    handleMovieRequest(filters);
+    handleMoviesRequest(filters);
   }, [filters]);
 
   return (
