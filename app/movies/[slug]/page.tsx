@@ -88,8 +88,11 @@ export default function Page({ params }: { params: { slug: string } }) {
 
       <div className="details flex flex-col w-2/3 items-center px-5">
         <div className="headers flex justify-between items-center">
-          <button className="bg-[#111155] w-12 h-12 rounded-full text-white items-center justify-center mr-5">
-            <Link href={"/"}>❮</Link>
+          <button
+            className="bg-[#111155] w-12 h-12 rounded-full text-white items-center justify-center mr-5"
+            onClick={() => router.push("/")}
+          >
+            ❮
           </button>
           <span className="text-7xl font-extrabold text-[#121212] my-8">
             {movie?.name}
