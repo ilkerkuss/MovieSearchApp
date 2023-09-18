@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { Card } from "../components/Card";
 import Image from "next/image";
-import { MovieInterface } from "../modals";
+import { MovieInterface } from "../models";
 import StarIcon from "@/public/star.png";
 
 export default function Page(movie: MovieInterface) {
@@ -13,7 +13,7 @@ export default function Page(movie: MovieInterface) {
   }, [movie.imgUrl]);
 
   return (
-    <div className="flex w-full h-full bg-[#d3f0f4]">
+    <div className="flex w-full h-screen bg-[#d3f0f4]">
       <div className="poster flex w-auto h-auto p-4">
         <Image
           className="rounded-xl"
@@ -27,7 +27,7 @@ export default function Page(movie: MovieInterface) {
           onError={() => {
             setImgSrc("/not-found.png");
           }}
-        ></Image>
+        />
       </div>
 
       <div className="details flex flex-col w-2/3 items-center px-5">

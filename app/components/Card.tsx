@@ -1,27 +1,25 @@
 "use client";
 import { useEffect, useState } from "react";
-import { MovieInterface } from "../modals";
+import { MovieInterface } from "../models";
 import Image from "next/image";
+import Link from "next/link";
 
 export const Card = ({
-  imgUrl,
-  title,
+  movieId,
+  name,
+  posterUrl,
   releaseYear,
-  releaseLocation,
-  score,
-  genre,
+  rating,
+  genres,
 }: MovieInterface) => {
-  const [imgSrc, setImgSrc] = useState(imgUrl);
+  const [imgSrc, setImgSrc] = useState(posterUrl);
 
   useEffect(() => {
-    setImgSrc(imgUrl);
-  }, [imgUrl]);
+    setImgSrc(posterUrl);
+  }, [posterUrl]);
 
   return (
-    <div className="flex basis-1/5 flex-col items-center w-[245px] bg-white rounded-xl p-2">
-      {/* <div className="flex justify-center items-center bg-red-500 h-[318px] w-[215px] rounded-xl m-3">
-        resim
-      </div> */}
+    <div className="flex basis-1/5 flex-col items-center w-[245px] bg-white rounded-xl p-3">
       <Image
         className="rounded-xl w-[215px] h-[318px]"
         alt="Movie Image"
@@ -33,28 +31,33 @@ export const Card = ({
         }}
       ></Image>
 
-      <div className="movie-content flex flex-col justify-start px-4 w-full">
+      <div className="movie-content flex flex-col justify-start w-full">
         <span className="text-[#5a5a5a] font-medium text-xs">
-          {releaseLocation},{releaseYear}
+          {releaseYear}
         </span>
 
         <span
-          title={title}
-          className="text-[#121212] font-extrabold text-base whitespace-nowrap overflow-hidden text-ellipsis"
+          title={name}
+          className="text-[#121212] w-[215px] font-extrabold text-base whitespace-nowrap overflow-hidden text-ellipsis"
         >
-          {title}
+          {name}
         </span>
         <span className="text-[#5a5a5a] font-medium text-xs">
-          Score: {score}/10
+          Score: {rating}/10
         </span>
-        <span className="text-[#959ca4] font-medium text-xs h-[2em]">
-          {genre}
+        <span className="text-[#959ca4] font-medium text-xs leading-4 h-[2em]">
+          {genres.toString()}
         </span>
       </div>
 
-      <div className="buttons flex my-2">
-        <button className="bg-[#111155] rounded-md text-white px-4 w-[215px] h-[34px]">
-          See Details
+      <div className="buttons flex mt-2">
+        <button
+          className="bg-[#111155] rounded-md text-white px-4 w-[215px] h-[34px]"
+          onClick={() => {
+            console.log(movieId, "buttonu basıldı");
+          }}
+        >
+          <Link href={`/movies/${movieId}`}>See Details</Link>
         </button>
       </div>
     </div>
