@@ -4,7 +4,6 @@ import Image from "next/image";
 import { MovieInterface, MovieResponseInterface } from "@/app/models";
 import StarIcon from "@/public/star.png";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 
 export default function Page({ params }: { params: { slug: string } }) {
   const [loading, setLoading] = useState<boolean>(true);
